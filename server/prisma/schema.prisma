@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Role {
+  ADMIN   // Guru / Pembuat Kelas
+  STUDENT // Siswa / Penilai
+}
+
+model User {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  password    String
+  role        Role     @default(STUDENT)
+  createdAt   DateTime @default(now())
+
+  // Relasi
+  classesCreated Class[]       @relation("ClassCreator")
+  memberships    ClassMember[]
+  submissions    Submission[]
+  reviewsGiven   Review[]
+}
+
+model Class {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  code        String   @unique // Kode unik (misal: 6 karakter alfanumerik) untuk join
+  creatorId   String
+  createdAt   DateTime @default(now())
+
+  creator     User          @relation("ClassCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  members     ClassMember[]
+  assignments Assignment[]
+}
+
+// Pivot table untuk relasi Many-to-Many (Siswa join Kelas)
+model ClassMember {
+  id        String   @id @default(uuid())
+  userId    String
+  classId   String
+  joinedAt  DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  class     Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  // Memastikan satu user tidak bisa join kelas yang sama 2 kali
+  @@unique([userId, classId]) 
+}
+
+model Assignment {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  deadline    DateTime // Digunakan untuk validasi saat submit
+  classId     String
+  createdAt   DateTime @default(now())
+
+  class       Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  submissions Submission[]
+}
+
+model Submission {
+  id           String   @id @default(uuid())
+  content      String   @db.Text // Bisa berisi teks essay/puisi atau URL file (gambar/audio)
+  submittedAt  DateTime @default(now())
+  assignmentId String
+  userId       String
+
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews      Review[]
+
+  // Memastikan 1 siswa hanya bisa submit 1 kali per tugas
+  @@unique([assignmentId, userId]) 
+}
+
+model Review {
+  id           String   @id @default(uuid())
+  score        Int      // Skala 0-100
+  feedback     String?  @db.Text // Opsional: Siswa bisa kasih komentar membangun
+  reviewedAt   DateTime @default(now())
+  
+  submissionId String
+  reviewerId   String   // User (siswa) yang memberikan nilai
+
+  submission   Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  reviewer     User       @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+
+  // Memastikan 1 siswa hanya bisa menilai submission yang sama 1 kali
+  @@unique([submissionId, reviewerId]) 
+}
