@@ -1,4 +1,4 @@
-# 📘 Koreksi — API Documentation
+# 📘 Koreksian — API Documentation
 
 > Dokumentasi API untuk **Koreksian** — aplikasi peer-review tugas subjektif (puisi, seni, pidato) di mana siswa saling menilai secara anonim.
 
