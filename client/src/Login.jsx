@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = ({ onSwitchToRegister }) => {
+const LoginPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPass, setShowPass] = useState(false);
   const [remember, setRemember] = useState(false);
@@ -150,13 +150,12 @@ const LoginPage = ({ onSwitchToRegister }) => {
 
           <div className="mt-6 pt-6 border-t border-primary/10 text-center text-sm text-primary/60">
             Belum punya akun?{" "}
-            <button
-              type="button"
-              onClick={onSwitchToRegister}
+            <a
+              href="/register"
               className="text-primary font-semibold hover:underline"
             >
               Daftar sekarang
-            </button>
+            </a>
           </div>
         </div>
 

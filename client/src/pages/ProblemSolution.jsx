@@ -129,10 +129,13 @@ const ProblemSolution = () => {
             </div>
 
             <div className="mt-10 pt-6 border-t border-gray-800">
-              <p className="text-sm font-bold text-emerald-500 flex items-center group-hover:text-emerald-400 transition-colors">
+              <a
+                href="/login"
+                className="text-sm font-bold text-emerald-500 flex items-center group-hover:text-emerald-400 transition-colors"
+              >
                 Penilaian Objektif untuk Karya Subjektif
                 <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
-              </p>
+              </a>
             </div>
           </div>
         </div>
