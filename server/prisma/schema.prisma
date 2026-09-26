@@ -1,8 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -56,7 +54,7 @@ model ClassMember {
   class     Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
 
   // Memastikan satu user tidak bisa join kelas yang sama 2 kali
-  @@unique([userId, classId]) 
+  @@unique([userId, classId])
 }
 
 model Assignment {
@@ -83,7 +81,7 @@ model Submission {
   reviews      Review[]
 
   // Memastikan 1 siswa hanya bisa submit 1 kali per tugas
-  @@unique([assignmentId, userId]) 
+  @@unique([assignmentId, userId])
 }
 
 model Review {
@@ -91,7 +89,7 @@ model Review {
   score        Int      // Skala 0-100
   feedback     String?  @db.Text // Opsional: Siswa bisa kasih komentar membangun
   reviewedAt   DateTime @default(now())
-  
+
   submissionId String
   reviewerId   String   // User (siswa) yang memberikan nilai
 
@@ -99,5 +97,5 @@ model Review {
   reviewer     User       @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
 
   // Memastikan 1 siswa hanya bisa menilai submission yang sama 1 kali
-  @@unique([submissionId, reviewerId]) 
+  @@unique([submissionId, reviewerId])
 }
