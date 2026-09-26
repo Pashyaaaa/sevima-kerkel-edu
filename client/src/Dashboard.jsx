@@ -204,9 +204,9 @@ const Dashboard = ({
               <Sparkles className="w-4 h-4 text-primary" />
             </div>
             <div className="leading-tight">
-              <p className="font-bold tracking-tight">Koreksi</p>
+              <p className="font-bold tracking-tight">Koreksian</p>
               <p className="text-[10px] text-secondary/40 -mt-0.5">
-                Peer Review App
+                Peer Review
               </p>
             </div>
           </div>
