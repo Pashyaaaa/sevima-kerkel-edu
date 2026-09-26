@@ -13,8 +13,12 @@ function LandingPage() {
       bgColor: "#1B1722",
       textColor: "#fff",
       links: [
-        { label: "Problem & Solution", ariaLabel: "Problem and Solution" },
-        { label: "Features", ariaLabel: "Project Features" },
+        {
+          label: "Problem & Solution",
+          ariaLabel: "Problem and Solution",
+          href: "#problem",
+        },
+        { label: "Features", ariaLabel: "Project Features", href: "#features" },
       ],
     },
     {
@@ -22,8 +26,16 @@ function LandingPage() {
       bgColor: "#2F293A",
       textColor: "#fff",
       links: [
-        { label: "Project", ariaLabel: "About Project" },
-        { label: "Developer", ariaLabel: "About Developer" },
+        {
+          label: "Project",
+          ariaLabel: "About Project",
+          href: "#about-project",
+        },
+        {
+          label: "Developer",
+          ariaLabel: "About Developer",
+          href: "#about-developer",
+        },
       ],
     },
     {
@@ -31,9 +43,9 @@ function LandingPage() {
       bgColor: "#2F293A",
       textColor: "#fff",
       links: [
-        { label: "Email", ariaLabel: "Email us" },
-        { label: "Twitter", ariaLabel: "Twitter" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn" },
+        { label: "Email", ariaLabel: "Email us", href: "#email" },
+        { label: "Twitter", ariaLabel: "Twitter", href: "#twitter" },
+        { label: "LinkedIn", ariaLabel: "LinkedIn", href: "#linkedin" },
       ],
     },
   ];

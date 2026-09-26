@@ -6,7 +6,7 @@ import { AppError } from "../utils/appError";
 export function notFoundHandler(req: Request, res: Response) {
   res.status(404).json({
     success: false,
-    message: `Route ${req.originalUrl} tidak ditemukclean.`,
+    message: `Route ${req.originalUrl} tidak ditemukan.`,
   });
 }
 

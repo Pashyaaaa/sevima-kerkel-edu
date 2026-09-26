@@ -55,12 +55,18 @@ function Hero() {
 
         {/* Area CTA: Tambahkan pointer-events-auto agar tombol bisa diklik */}
         <div className="cta flex gap-4 mt-6 pointer-events-auto">
-          <button className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:cursor-crosshair hover:bg-gray-200 transition-colors">
+          <a
+            href="/login"
+            className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:cursor-crosshair hover:bg-gray-200 transition-colors"
+          >
             Get Started
-          </button>
-          <button className="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:cursor-crosshair hover:bg-white/10 transition-colors">
+          </a>
+          <a
+            href="demo"
+            className="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:cursor-crosshair hover:bg-white/10 transition-colors"
+          >
             Demo
-          </button>
+          </a>
         </div>
       </div>
     </header>

@@ -153,3 +153,8 @@
     @apply font-sans;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* offset buat navbar sticky */
+}

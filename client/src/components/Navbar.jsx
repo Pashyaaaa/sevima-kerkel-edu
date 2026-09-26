@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({
   logo,
@@ -136,6 +137,8 @@ const Navbar = ({
     if (el) cardsRef.current[i] = el;
   };
 
+  const navigate = useNavigate();
+
   return (
     <div
       className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1.2em] md:top-[2em] ${className}`}
@@ -179,6 +182,7 @@ const Navbar = ({
 
           <button
             type="button"
+            onClick={() => navigate("/login")}
             className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium cursor-pointer transition-colors duration-300"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
