@@ -1,6 +1,6 @@
 # 📘 Koreksi — API Documentation
 
-> Dokumentasi API untuk **Koreksi** — aplikasi peer-review tugas subjektif (puisi, seni, pidato) di mana siswa saling menilai secara anonim.
+> Dokumentasi API untuk **Koreksian** — aplikasi peer-review tugas subjektif (puisi, seni, pidato) di mana siswa saling menilai secara anonim.
 
 ![Version](https://img.shields.io/badge/version-1.0-blueviolet)
 ![Status](https://img.shields.io/badge/status-development-orange)
